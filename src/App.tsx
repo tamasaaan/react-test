@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { PageA } from 'page/PageA'
+import React from 'react'
+import './App.css'
+import logo from './logo.svg'
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
         >
           Learn React
         </a>
+
+        <PageA />
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
