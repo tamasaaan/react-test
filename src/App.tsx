@@ -1,27 +1,22 @@
-import { PageA } from 'page/PageA'
+import { CssBaseline } from '@material-ui/core'
+import { BmiContextProvider } from 'page/bmi/BmiContextProvider'
+import { BmiListPage } from 'page/bmi/BmiListPage'
+import { BmiContextType } from 'page/bmi/models/BmiContextModel'
 import React from 'react'
 import './App.css'
-import logo from './logo.svg'
+
+export const BmiContext = React.createContext({} as BmiContextType) // こう宣言しないと怒られる。
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <CssBaseline />
+      <BmiContextProvider>
+        <BmiListPage />
+        {/* Bmiコンテキストに関連するページを追加していく */}
+      </BmiContextProvider>
 
-        <PageA />
-      </header>
+      {/* 別のコンテキストを追加していく */}
     </div>
   )
 }
