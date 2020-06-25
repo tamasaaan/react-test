@@ -1,9 +1,9 @@
 import React from 'react'
 
 interface TitleComponent {
-  title: string
+    title: string
 }
 
 export const TitleComponent = (props: TitleComponent) => (
-  <div>{props.title}</div>
+    <div>{props.title}</div>
 )

@@ -1,9 +1,9 @@
 import React from 'react'
 
 interface SubTitleComponent {
-  title: string
+    title: string
 }
 
 export const SubTitleComponent = (props: SubTitleComponent) => (
-  <div>{props.title}</div>
+    <div>{props.title}</div>
 )
