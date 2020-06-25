@@ -10,7 +10,7 @@ import { BmiContextActionTypeEnum } from 'page/bmi/models/BmiContextModel'
 import React from 'react'
 
 export const BmiListPage = () => {
-    const { state, dispatch } = React.useContext(BmiContext)
+    const { dispatch } = React.useContext(BmiContext)
     const classes = useStyles()
 
     // const initFetch = useCallback(() => {
@@ -19,9 +19,9 @@ export const BmiListPage = () => {
 
     React.useEffect(() => {
         console.log('effect')
-        dispatch({ type: BmiContextActionTypeEnum.LOAD_STAFFS, payload: state })
+        dispatch({ type: BmiContextActionTypeEnum.LOAD_STAFFS })
         // initFetch()
-    }, []) // warning
+    }, [dispatch]) // warning
 
     return (
         <div className={classes.root}>

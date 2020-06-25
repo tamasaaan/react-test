@@ -10,7 +10,42 @@ import {
     AddBmiStaffForm,
     BmiContextActionTypeEnum,
 } from 'page/bmi/models/BmiContextModel'
-import React from 'react'
+import React, { FC, memo, useCallback, useState } from 'react'
+
+const _NameField: FC<{
+    initialValue: string
+    onBlur: (value: string) => void
+}> = ({ initialValue, onBlur }) => {
+    const [value, setValue] = useState(initialValue)
+
+    const onChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setValue(e.currentTarget.value)
+        },
+        [setValue],
+    )
+
+    const blur = useCallback(() => {
+        onBlur(value)
+    }, [onBlur, value])
+
+    return (
+        <TextField
+            label="名前"
+            name="name"
+            variant="outlined"
+            size="small"
+            fullWidth
+            margin="normal"
+            onChange={onChange}
+            onBlur={blur}
+            value={value}
+        />
+    )
+}
+
+// memoしたコンポーネントをの名前をつける
+const NameField = memo(_NameField)
 
 export const StaffForm = () => {
     const classes = useStyles()
@@ -64,15 +99,17 @@ export const StaffForm = () => {
     return (
         <Card className={classes.root}>
             <CardContent>
-                <TextField
-                    label="名前"
-                    name="name"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    margin="normal"
-                    onChange={(e) => handleChangeName(e.currentTarget.value)}
-                    value={state.form?.name || ''}
+                {/* サブコンポーネントでstate */}
+                <NameField
+                    // label="名前"
+                    // name="name"
+                    // variant="outlined"
+                    // size="small"
+                    // fullWidth
+                    // margin="normal"
+                    // onChange={(e) => handleChangeName(e.currentTarget.value)}
+                    initialValue={state.form?.name || ''}
+                    onBlur={handleChangeName}
                 />
 
                 <TextField
